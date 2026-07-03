@@ -12,7 +12,7 @@ import (
 	"os"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/situation-sh/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/models"
 )
 
 func init() {

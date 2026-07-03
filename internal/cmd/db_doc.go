@@ -9,7 +9,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/situation-sh/situation/pkg/store"
+	"github.com/asiffer/situation/pkg/store"
 	"github.com/uptrace/bun/schema"
 	"github.com/urfave/cli/v3"
 )

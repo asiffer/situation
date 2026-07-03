@@ -7,9 +7,9 @@ import (
 	"log/slog"
 
 	"github.com/modelcontextprotocol/go-sdk/mcp"
-	"github.com/situation-sh/situation/agent/config"
-	"github.com/situation-sh/situation/pkg/store"
-	"github.com/situation-sh/situation/pkg/utils"
+	"github.com/asiffer/situation/agent/config"
+	"github.com/asiffer/situation/pkg/store"
+	"github.com/asiffer/situation/pkg/utils"
 	"github.com/uptrace/bun/dialect"
 	"github.com/urfave/cli/v3"
 )
@@ -73,7 +73,7 @@ var server = mcp.NewServer(
 		Name:       "situation",
 		Title:      "Situation MCP server",
 		Version:    config.Version,
-		WebsiteURL: "https://github.com/situation-sh/situation",
+		WebsiteURL: "https://github.com/asiffer/situation",
 		Icons: []mcp.Icon{
 			{
 				Source:   SITUATION_SVG,

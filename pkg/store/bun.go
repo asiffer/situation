@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/situation-sh/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/models"
 	"github.com/uptrace/bun"
 	"github.com/uptrace/bun/dialect"
 	"github.com/uptrace/bun/dialect/pgdialect"

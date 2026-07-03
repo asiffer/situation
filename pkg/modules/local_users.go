@@ -8,7 +8,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/situation-sh/situation/pkg/modules/localusers"
+	"github.com/asiffer/situation/pkg/modules/localusers"
 )
 
 func init() {

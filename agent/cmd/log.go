@@ -5,7 +5,7 @@ import (
 	"log/slog"
 
 	"github.com/sirupsen/logrus"
-	"github.com/situation-sh/situation/pkg/utils"
+	"github.com/asiffer/situation/pkg/utils"
 )
 
 var logger = utils.NewLogger()

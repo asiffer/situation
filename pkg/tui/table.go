@@ -8,7 +8,7 @@ import (
 	"charm.land/bubbles/v2/table"
 	tea "charm.land/bubbletea/v2"
 	"charm.land/lipgloss/v2"
-	"github.com/situation-sh/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/models"
 )
 
 var colRatios = []float64{

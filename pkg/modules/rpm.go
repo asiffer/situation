@@ -15,8 +15,8 @@ import (
 
 	"github.com/hashicorp/go-version"
 	"github.com/sirupsen/logrus"
-	"github.com/situation-sh/situation/pkg/models"
-	"github.com/situation-sh/situation/pkg/modules/rpm"
+	"github.com/asiffer/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/modules/rpm"
 )
 
 // see https://github.com/shirou/gopsutil/blob/master/host/host_linux.go#L215

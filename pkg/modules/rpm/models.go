@@ -8,8 +8,8 @@ import (
 	"path"
 	"unicode/utf8"
 
-	"github.com/situation-sh/situation/pkg/models"
-	"github.com/situation-sh/situation/pkg/utils"
+	"github.com/asiffer/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/utils"
 )
 
 type Pkg struct {

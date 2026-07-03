@@ -1,6 +1,6 @@
 package modules
 
-import "github.com/situation-sh/situation/pkg/models"
+import "github.com/asiffer/situation/pkg/models"
 
 // moduleStatus stores the status of the run modules
 var moduleStatus map[string]error

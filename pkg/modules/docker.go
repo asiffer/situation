@@ -11,8 +11,8 @@ import (
 	"github.com/asiffer/puzzle"
 	"github.com/moby/moby/client"
 	"github.com/sirupsen/logrus"
-	docker "github.com/situation-sh/situation/pkg/modules/docker"
-	"github.com/situation-sh/situation/pkg/store"
+	docker "github.com/asiffer/situation/pkg/modules/docker"
+	"github.com/asiffer/situation/pkg/store"
 )
 
 func init() {

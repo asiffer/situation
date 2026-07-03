@@ -13,10 +13,10 @@ import (
 	"github.com/sirupsen/logrus"
 	cli "github.com/urfave/cli/v3"
 
-	"github.com/situation-sh/situation/agent/config"
-	"github.com/situation-sh/situation/pkg/modules"
-	"github.com/situation-sh/situation/pkg/store"
-	"github.com/situation-sh/situation/pkg/tui"
+	"github.com/asiffer/situation/agent/config"
+	"github.com/asiffer/situation/pkg/modules"
+	"github.com/asiffer/situation/pkg/store"
+	"github.com/asiffer/situation/pkg/tui"
 )
 
 var (

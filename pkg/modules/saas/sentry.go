@@ -3,7 +3,7 @@ package saas
 import (
 	"net"
 
-	"github.com/situation-sh/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/models"
 )
 
 func init() {
