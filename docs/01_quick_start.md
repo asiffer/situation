@@ -5,7 +5,7 @@ summary: Grab your first data
 
 ## Installation
 
-The agent currently supports Linux (`armv5`, `armv6`, `armv7`, `arm64` and `amd64`) and Windows (only `amd64`). The binaries are made available through [github releases](https://github.com/situation-sh/situation/releases/latest/).
+The agent currently supports Linux (`armv5`, `armv6`, `armv7`, `arm64` and `amd64`) and Windows (only `amd64`). The binaries are made available through [github releases](https://github.com/asiffer/situation/releases/latest/).
 
 You can also compile it from sources (once you have have a [go compiler `>=1.18`](https://go.dev/dl/)):
 

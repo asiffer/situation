@@ -181,10 +181,10 @@ container:
 # SDK generators (experimental)
 # NOTE: a migrated pg instance is required (PG_DSN should be set accordingly)
 
-sdk: sdk/drizzle/situation-sh-drizzle-$(VERSION).tgz \
+sdk: sdk/drizzle/situation-drizzle-$(VERSION).tgz \
 	 sdk/sqlmodel/dist/situation_sdk-$(VERSION)-py3-none-any.whl
 
-sdk/drizzle/situation-sh-drizzle-$(VERSION).tgz: $(MIGRATION_FILES)
+sdk/drizzle/situation-drizzle-$(VERSION).tgz: $(MIGRATION_FILES)
 	@mkdir -p sdk/drizzle
 	@sed -i 's/"version":[ ]*".*"/"version": "$(VERSION)"/' sdk/drizzle/package.json
 	bun run drizzle-kit pull --out sdk/drizzle --url "$(PG_DSN)" --dialect postgresql

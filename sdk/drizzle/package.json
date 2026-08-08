@@ -1,5 +1,5 @@
 {
-  "name": "@situation-sh/drizzle",
+  "name": "@situation/drizzle",
   "version": "0.20.0",
   "description": "Drizzle schema for Situation",
   "author": {

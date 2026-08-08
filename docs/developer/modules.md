@@ -224,7 +224,7 @@ import (
     "context"
 
     // load the sub-package
-    heavy "github.com/situation-sh/situation/pkg/modules/heavy"
+    heavy "github.com/asiffer/situation/pkg/modules/heavy"
 )
 
 type HeavyModule struct {
