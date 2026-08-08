@@ -10,6 +10,12 @@ on:
       - "**.go"
       - ".github/workflows/gosec.yaml"
 
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
 env:
   GO111MODULE: on
   CGO_ENABLED: 0
