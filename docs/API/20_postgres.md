@@ -98,13 +98,13 @@ summary: Database schema for PostgreSQL storage
 | `id` | `BIGINT` | +mynaui:link-one+ |
 | `created_at` | `TIMESTAMPTZ` |  |
 | `updated_at` | `TIMESTAMPTZ` |  |
-| `name` | `VARCHAR` | +mynaui:two-diamond-solid+ |
-| `mac` | `VARCHAR` | +mynaui:one-diamond-solid+ |
+| `name` | `VARCHAR` | +mynaui:one-diamond-solid+ |
+| `mac` | `VARCHAR` | +mynaui:two-diamond-solid+ |
 | `mac_vendor` | `VARCHAR` |  |
 | `ip` | `VARCHAR[]` |  |
 | `gateway` | `VARCHAR` |  |
 | `flags` | `JSON` |  |
-| `tag` | `VARCHAR` | +mynaui:one-diamond-solid+ |
+| `tag` | `VARCHAR` | +mynaui:two-diamond-solid+ |
 | `machine_id` | `BIGINT` | +mynaui:two-diamond-solid+ [+mynaui:key+](#machines) |
 
 

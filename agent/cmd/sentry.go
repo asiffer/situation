@@ -1,9 +1,9 @@
 package cmd
 
 import (
+	"github.com/asiffer/situation/agent/config"
+	"github.com/asiffer/situation/pkg/modules"
 	"github.com/getsentry/sentry-go"
-	"github.com/situation-sh/situation/agent/config"
-	"github.com/situation-sh/situation/pkg/modules"
 )
 
 func initSentry(dsn string) error {
@@ -12,7 +12,7 @@ func initSentry(dsn string) error {
 			Dsn:              dsn,
 			EnableTracing:    true,
 			TracesSampleRate: 1.0,
-			EnableLogs:       true,
+			DisableLogs:      false,
 			ServerName:       config.AgentString(),
 			Release:          config.Version,
 			Dist:             config.Commit,

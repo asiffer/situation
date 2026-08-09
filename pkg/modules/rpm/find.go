@@ -7,7 +7,7 @@ import (
 	"io/fs"
 	"path/filepath"
 
-	"github.com/situation-sh/situation/pkg/utils"
+	"github.com/asiffer/situation/pkg/utils"
 )
 
 const fileName = "rpmdb.sqlite"

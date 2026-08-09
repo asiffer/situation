@@ -4,7 +4,7 @@ import (
 	"context"
 	"net"
 
-	"github.com/situation-sh/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/models"
 	"github.com/uptrace/bun"
 )
 

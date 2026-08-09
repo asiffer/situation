@@ -6,7 +6,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/situation-sh/situation/internal/docs"
+	"github.com/asiffer/situation/internal/docs"
 	"github.com/urfave/cli/v3"
 )
 

@@ -5,8 +5,8 @@ import (
 	"fmt"
 
 	"github.com/asiffer/puzzle"
-	"github.com/situation-sh/situation/pkg/models"
-	"github.com/situation-sh/situation/pkg/modules/saas"
+	"github.com/asiffer/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/modules/saas"
 )
 
 func init() {

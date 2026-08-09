@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/situation-sh/situation/pkg/models"
-	"github.com/situation-sh/situation/pkg/modules/macvendor"
+	"github.com/asiffer/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/modules/macvendor"
 )
 
 func init() {

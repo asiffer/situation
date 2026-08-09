@@ -3,8 +3,8 @@ package store
 import (
 	"context"
 
-	"github.com/situation-sh/situation/pkg/models"
-	"github.com/situation-sh/situation/pkg/utils"
+	"github.com/asiffer/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/utils"
 )
 
 // GetOrCreateSubnetwork returns a subnetwork by its CIDR or creates it if it doesn't exist.

@@ -10,7 +10,7 @@ import (
 	"context"
 
 	rpmdb "github.com/knqyf263/go-rpmdb/pkg"
-	"github.com/situation-sh/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/models"
 )
 
 const (

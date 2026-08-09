@@ -3,7 +3,7 @@
 package arp
 
 import (
-	"github.com/situation-sh/situation/pkg/utils"
+	"github.com/asiffer/situation/pkg/utils"
 	"golang.org/x/sys/windows"
 )
 

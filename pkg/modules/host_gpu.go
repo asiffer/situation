@@ -12,7 +12,7 @@ import (
 
 	"github.com/jaypipes/ghw"
 	"github.com/jaypipes/pcidb/types"
-	"github.com/situation-sh/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/models"
 )
 
 func init() {

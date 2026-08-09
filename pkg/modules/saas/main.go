@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/situation-sh/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/models"
 )
 
 var detectors = map[string]SaaSDetector{}

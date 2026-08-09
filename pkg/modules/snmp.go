@@ -15,9 +15,9 @@ import (
 
 	"github.com/asiffer/puzzle"
 	"github.com/gosnmp/gosnmp"
-	"github.com/situation-sh/situation/pkg/models"
-	"github.com/situation-sh/situation/pkg/modules/snmp"
-	"github.com/situation-sh/situation/pkg/store"
+	"github.com/asiffer/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/modules/snmp"
+	"github.com/asiffer/situation/pkg/store"
 
 	"github.com/sirupsen/logrus"
 )

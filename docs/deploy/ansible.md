@@ -23,7 +23,7 @@ Then it deploys the binaries to the hosts defined in the inventory and outputs a
   hosts: localhost
   gather_facts: false
   vars:
-    repo: "situation-sh/situation"
+    repo: "asiffer/situation"
     download_dir: "{{ TMP_DIR | default('/tmp/situation') }}"
   tasks:
     - name: Ensure download directory exists

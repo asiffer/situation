@@ -13,7 +13,7 @@ import (
 
 	"github.com/minio/selfupdate"
 	"github.com/sirupsen/logrus"
-	"github.com/situation-sh/situation/agent/config"
+	"github.com/asiffer/situation/agent/config"
 	"github.com/urfave/cli/v3"
 	"golang.org/x/mod/semver"
 )
@@ -29,7 +29,7 @@ func (e *updateUnavailableError) Error() string {
 }
 
 var forceUpdate bool = false
-var releaseURL string = "https://api.github.com/repos/situation-sh/situation/releases"
+var releaseURL string = "https://api.github.com/repos/asiffer/situation/releases"
 var releaseToken string = ""
 
 var updateCmd = cli.Command{

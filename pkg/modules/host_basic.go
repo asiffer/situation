@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/shirou/gopsutil/v4/host"
-	"github.com/situation-sh/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/models"
 )
 
 func init() {

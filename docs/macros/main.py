@@ -13,7 +13,7 @@ from mkdocs_macros.plugin import MacrosPlugin
 def latest_release() -> Dict[str, Any]:
     try:
         response = requests.get(
-            "https://api.github.com/repos/situation-sh/situation/releases/latest",
+            "https://api.github.com/repos/asiffer/situation/releases/latest",
             headers={
                 "Accept": "application/vnd.github+json",
                 "X-GitHub-Api-Version": "2022-11-28",
@@ -37,7 +37,7 @@ def latest_release() -> Dict[str, Any]:
 def latest_successful_workflow(name: str) -> Optional[Dict[str, Any]]:
     try:
         response = requests.get(
-            f"https://api.github.com/repos/situation-sh/situation/actions/workflows/{name}/runs?status=success&per_page=1",
+            f"https://api.github.com/repos/asiffer/situation/actions/workflows/{name}/runs?status=success&per_page=1",
             headers={
                 "Accept": "application/vnd.github+json",
                 "X-GitHub-Api-Version": "2022-11-28",
@@ -79,7 +79,7 @@ def define_env(env: MacrosPlugin):
 
     img_dir = "../img"
 
-    env.variables["github_repo"] = "https://github.com/situation-sh/situation"
+    env.variables["github_repo"] = "https://github.com/asiffer/situation"
     env.variables["windows_ok"] = (
         f"""![windows]({img_dir}/windows.svg){{: class="tag" title="Windows" }}"""
     )

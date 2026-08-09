@@ -10,8 +10,8 @@ import (
 
 	tea "charm.land/bubbletea/v2"
 	"charm.land/lipgloss/v2"
-	"github.com/situation-sh/situation/pkg/models"
-	"github.com/situation-sh/situation/pkg/store"
+	"github.com/asiffer/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/store"
 )
 
 var pressEnter = lipgloss.NewStyle().Render("Press Enter to continue")

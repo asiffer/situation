@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/sirupsen/logrus"
-	"github.com/situation-sh/situation/internal/cmd"
+	"github.com/asiffer/situation/internal/cmd"
 )
 
 func main() {

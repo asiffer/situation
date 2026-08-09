@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/situation-sh/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/models"
 )
 
 // GetMachineNICs returns all network interfaces for a given machine.

@@ -9,7 +9,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/situation-sh/situation/pkg/store"
+	"github.com/asiffer/situation/pkg/store"
 	"github.com/uptrace/bun/schema"
 	"github.com/urfave/cli/v3"
 )
@@ -105,7 +105,7 @@ func dbDocAction(ctx context.Context, cmd *cli.Command) error {
 			return err
 		}
 		// #nosec G304
-		if err := dbWrite(storage, path.Join(dbDocsOutputDir, "sqlite.md"), "SQLite"); err != nil { // #nosec G304
+		if err := dbWrite(storage, path.Join(dbDocsOutputDir, "10_sqlite.md"), "SQLite"); err != nil { // #nosec G304
 			return err
 		}
 	}
@@ -119,7 +119,7 @@ func dbDocAction(ctx context.Context, cmd *cli.Command) error {
 		if err != nil {
 			return err
 		}
-		if err := dbWrite(storage, path.Join(dbDocsOutputDir, "postgres.md"), "PostgreSQL"); err != nil {
+		if err := dbWrite(storage, path.Join(dbDocsOutputDir, "20_postgres.md"), "PostgreSQL"); err != nil {
 			return err
 		}
 	}

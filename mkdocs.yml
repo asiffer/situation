@@ -1,6 +1,6 @@
 site_name: Situation
 site_url: https://asiffer.github.io/situation
-repo_url: https://github.com/situation-sh/situation
+repo_url: https://github.com/asiffer/situation
 docs_dir: docs
 dev_addr: "127.0.0.1:12000"
 
@@ -37,6 +37,6 @@ extra_css:
 
 extra:
   variables:
-    go_module: github.com/situation-sh/situation
+    go_module: github.com/asiffer/situation
     godoc_base_url: https://pkg.go.dev
 

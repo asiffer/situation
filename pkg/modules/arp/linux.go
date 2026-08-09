@@ -5,7 +5,7 @@ package arp
 import (
 	"net"
 
-	"github.com/situation-sh/situation/pkg/utils"
+	"github.com/asiffer/situation/pkg/utils"
 	"github.com/vishvananda/netlink"
 )
 

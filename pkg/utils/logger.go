@@ -13,7 +13,7 @@ import (
 	"github.com/fatih/color"
 	"github.com/shiena/ansicolor"
 	"github.com/sirupsen/logrus"
-	"github.com/situation-sh/situation/agent/config"
+	"github.com/asiffer/situation/agent/config"
 )
 
 type ModuleFormatter struct {

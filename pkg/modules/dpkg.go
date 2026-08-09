@@ -9,8 +9,8 @@ package modules
 import (
 	"context"
 
-	"github.com/situation-sh/situation/pkg/models"
-	"github.com/situation-sh/situation/pkg/modules/dpkg"
+	"github.com/asiffer/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/modules/dpkg"
 )
 
 // see https://github.com/shirou/gopsutil/blob/master/host/host_linux.go#L215

@@ -1,10 +1,10 @@
 # Situation
 
-[![run](https://github.com/situation-sh/situation/actions/workflows/run.yaml/badge.svg)](https://github.com/situation-sh/situation/actions/workflows/run.yaml)
-[![docs](https://github.com/situation-sh/situation/actions/workflows/docs.yaml/badge.svg)](https://situation-sh.github.io/situation/)
-[![Go Report Card](https://goreportcard.com/badge/github.com/situation-sh/situation)](https://goreportcard.com/report/github.com/situation-sh/situation)
-[![gosec](https://github.com/situation-sh/situation/actions/workflows/gosec.yaml/badge.svg)](https://github.com/situation-sh/situation/security/code-scanning)
-[![CodeQL](https://github.com/situation-sh/situation/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/situation-sh/situation/security/quality)
+[![run](https://github.com/asiffer/situation/actions/workflows/run.yaml/badge.svg)](https://github.com/asiffer/situation/actions/workflows/run.yaml)
+[![docs](https://github.com/asiffer/situation/actions/workflows/docs.yaml/badge.svg)](https://asiffer.github.io/situation/)
+[![Go Report Card](https://goreportcard.com/badge/github.com/asiffer/situation)](https://goreportcard.com/report/github.com/asiffer/situation)
+[![gosec](https://github.com/asiffer/situation/actions/workflows/gosec.yaml/badge.svg)](https://github.com/asiffer/situation/security/code-scanning)
+[![CodeQL](https://github.com/asiffer/situation/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/asiffer/situation/security/quality)
 
 Situation provides the core infrastructure to automatically collect and consolidate IT data (machines, device, apps, network, flows...), on its own. 
 Providing then an up-to-date and reliable view of the current state of your infra (or your home LAN), namely the *graph*.
@@ -19,12 +19,12 @@ The agent currently supports Linux and Windows.
 
 ### Github releases
 
-Pre-built binaries are available through [github releases](https://github.com/situation-sh/situation/releases/latest/).
+Pre-built binaries are available through [github releases](https://github.com/asiffer/situation/releases/latest/).
 
 ### From sources
 
 ```shell
-go install github.com/situation-sh/situation/agent@latest
+go install github.com/asiffer/situation/agent@latest
 ```
 
 ## Quick start
@@ -53,4 +53,4 @@ The **IT data collection starts here**!
 situation run --db="postgres://user:password@example.org:5432/situation"
 ```
 
-See the [docs](https://situation-sh.github.io/situation/) for more details.
+See the [docs](https://asiffer.github.io/situation/) for more details.

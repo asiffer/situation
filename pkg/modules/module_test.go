@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/situation-sh/situation/pkg/models"
-	"github.com/situation-sh/situation/pkg/store"
+	"github.com/asiffer/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/store"
 	"github.com/uptrace/bun"
 )
 

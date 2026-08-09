@@ -5,7 +5,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/sirupsen/logrus"
-	"github.com/situation-sh/situation/pkg/store"
+	"github.com/asiffer/situation/pkg/store"
 )
 
 const (

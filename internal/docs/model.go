@@ -194,7 +194,7 @@ func (m *ModuleDoc) ImportHeader() string {
 
 	// integrate submodules dependencies
 	for _, imp := range m.Imports {
-		if strings.HasPrefix(imp, "github.com/situation-sh/situation") {
+		if strings.HasPrefix(imp, "github.com/asiffer/situation") {
 			// ignore local imports
 			continue
 		}

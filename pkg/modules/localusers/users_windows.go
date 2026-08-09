@@ -7,8 +7,8 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/situation-sh/situation/pkg/models"
-	"github.com/situation-sh/situation/pkg/utils"
+	"github.com/asiffer/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/utils"
 	"golang.org/x/sys/windows"
 )
 

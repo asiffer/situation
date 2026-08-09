@@ -10,8 +10,8 @@ import (
 
 	"github.com/minio/selfupdate"
 	"github.com/sirupsen/logrus"
-	"github.com/situation-sh/situation/agent/config"
-	"github.com/situation-sh/situation/pkg/utils"
+	"github.com/asiffer/situation/agent/config"
+	"github.com/asiffer/situation/pkg/utils"
 	"github.com/urfave/cli/v3"
 )
 

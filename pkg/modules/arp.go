@@ -8,9 +8,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/situation-sh/situation/pkg/models"
-	"github.com/situation-sh/situation/pkg/modules/arp"
-	"github.com/situation-sh/situation/pkg/utils"
+	"github.com/asiffer/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/modules/arp"
+	"github.com/asiffer/situation/pkg/utils"
 )
 
 func init() {

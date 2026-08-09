@@ -5,8 +5,8 @@ import (
 	"os"
 
 	"github.com/sirupsen/logrus"
-	"github.com/situation-sh/situation/agent/cmd"
-	"github.com/situation-sh/situation/agent/config"
+	"github.com/asiffer/situation/agent/cmd"
+	"github.com/asiffer/situation/agent/config"
 )
 
 func main() {

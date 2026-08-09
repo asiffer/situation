@@ -8,7 +8,7 @@ import (
 	"os/user"
 	"strings"
 
-	"github.com/situation-sh/situation/pkg/models"
+	"github.com/asiffer/situation/pkg/models"
 )
 
 const USER_SOURCE = "/etc/passwd"

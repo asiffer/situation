@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/situation-sh/situation/agent/config"
+	"github.com/asiffer/situation/agent/config"
 	"github.com/urfave/cli/v3"
 )
 
