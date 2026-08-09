@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     tags:
-      - 'v*'
+      - "v*"
   pull_request:
     types: # when a pull request merges, the pull request is automatically closed
       - closed
@@ -21,7 +21,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout Source
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       # Setup Go
       - name: Setup Go
         uses: actions/setup-go@v7

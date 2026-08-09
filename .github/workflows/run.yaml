@@ -11,13 +11,12 @@ on:
       - "go.sum"
       - ".github/workflows/run.yaml"
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Source
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       # Setup Go
       - name: Setup Go
         uses: actions/setup-go@v7
