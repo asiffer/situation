@@ -63,7 +63,7 @@ jobs:
       image: ${{ matrix.image }}
     steps:
       - name: Download linux binary
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: situation-linux
           path: bin
@@ -90,7 +90,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Download windows binary
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: situation-windows
           path: bin
