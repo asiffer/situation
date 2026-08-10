@@ -7,7 +7,7 @@ summary: IT data collection infrastructure
 Situation provides the core infrastructure to automatically collect and consolidate IT data (machines, device, apps, network, flows...), on its own. 
 Providing then an up-to-date and reliable view of the current state of your infra (or your home LAN), namely the *graph*.
 
-Now you are ready to build a context-rich IT tool above Situation.
+You merely have to provide a database (postgresql) and let the deployed agents fill it.
 
 ~{architecture}(architecture.json)
 
