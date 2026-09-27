@@ -10,10 +10,9 @@ import (
 	"net"
 	"strings"
 
-	netroute "github.com/libp2p/go-netroute"
 	"github.com/asiffer/situation/pkg/models"
-	"github.com/asiffer/situation/pkg/store"
 	"github.com/asiffer/situation/pkg/utils"
+	netroute "github.com/libp2p/go-netroute"
 )
 
 var (
@@ -51,14 +50,36 @@ func (m *HostNetworkModule) Dependencies() []string {
 	return []string{"host-basic"}
 }
 
-func buildMACHostNICMap(ctx context.Context, storage *store.BunStorage) map[string]*models.NetworkInterface {
-	hostNICs := storage.GetHostNICs(ctx)
-	macNICMap := make(map[string]*models.NetworkInterface)
+func hostNICMACKey(mac string) string {
+	return "mac:" + strings.ToLower(mac)
+}
+
+func hostNICNameKey(name string) string {
+	return "name:" + name
+}
+
+// Index each NIC by MAC and name; prefixes keep the two key spaces distinct.
+func buildHostNICMap(hostNICs []*models.NetworkInterface) map[string]*models.NetworkInterface {
+	hostNICMap := make(map[string]*models.NetworkInterface)
 	for _, nic := range hostNICs {
-		mac := strings.ToLower(nic.MAC)
-		macNICMap[mac] = nic
+		if nic.MAC != "" {
+			hostNICMap[hostNICMACKey(nic.MAC)] = nic
+		}
+		if nic.Name != "" {
+			hostNICMap[hostNICNameKey(nic.Name)] = nic
+		}
 	}
-	return macNICMap
+	return hostNICMap
+}
+
+// Prefer MAC across renames, then use the name when an interface's MAC changes.
+func findHostNIC(iface net.Interface, hostNICMap map[string]*models.NetworkInterface) *models.NetworkInterface {
+	if mac := iface.HardwareAddr.String(); mac != "" {
+		if nic, exists := hostNICMap[hostNICMACKey(mac)]; exists {
+			return nic
+		}
+	}
+	return hostNICMap[hostNICNameKey(iface.Name)]
 }
 
 func hashNICSubnet(ns *models.NetworkInterfaceSubnet) string {
@@ -70,7 +91,7 @@ func (m *HostNetworkModule) Run(ctx context.Context) error {
 	storage := getStorage(ctx)
 
 	hostID := storage.GetHostID(ctx)
-	macNICMap := buildMACHostNICMap(ctx, storage)
+	hostNICMap := buildHostNICMap(storage.GetHostNICs(ctx))
 
 	nics := make([]*models.NetworkInterface, 0)
 	subnets := make([]*models.Subnetwork, 0)
@@ -84,12 +105,11 @@ func (m *HostNetworkModule) Run(ctx context.Context) error {
 	// var nic *models.NetworkInterface
 	// create nics
 	for _, iface := range ifaces {
-		nic := &models.NetworkInterface{MachineID: hostID}
-		// try to find existing nic by MAC address
-		mac := iface.HardwareAddr.String()
-		if n, exists := macNICMap[mac]; exists {
-			nic = n
+		nic := findHostNIC(iface, hostNICMap)
+		if nic == nil {
+			nic = &models.NetworkInterface{MachineID: hostID}
 		}
+		mac := iface.HardwareAddr.String()
 		// name
 		nic.Name = iface.Name
 		// mac
@@ -139,10 +159,11 @@ func (m *HostNetworkModule) Run(ctx context.Context) error {
 				s.Gateway = gwIP.String()
 			}
 
+			ips := ip.String()
 			if len(nic.IP) == 0 {
-				nic.IP = []string{ip.String()}
+				nic.IP = []string{ips}
 			} else {
-				nic.IP = append(nic.IP, ip.String())
+				nic.IP = utils.AppendIfNotExists(nic.IP, ips)
 			}
 
 			entry := logger.
@@ -173,10 +194,6 @@ func (m *HostNetworkModule) Run(ctx context.Context) error {
 				IP:               ip.String(),
 			}
 			allLinks = append(allLinks, link)
-			// links[hashNICSubnet(link)] = link
-			// key := hashNICSubnet()
-			// key := fmt.Sprintf("%v,%v", s.NetworkCIDR, nic.MAC)
-			// subnetNICMapper[key] = true
 		}
 
 		// add the NIC
@@ -381,65 +398,3 @@ func gatewayWithSrc(hw net.HardwareAddr, src net.IP) (*net.Interface, net.IP, er
 	iface, gw, _, err := r.RouteWithSrc(hw, src, GOOGLE)
 	return iface, gw, err
 }
-
-// func copyHardwareAddr(from net.HardwareAddr) net.HardwareAddr {
-// 	dest := make(net.HardwareAddr, len(from))
-// 	copy(dest, from)
-// 	return dest
-// }
-
-// func GetNetworkInterfaces() ([]NetworkInterface, error) {
-// 	// get the interfaces
-// 	ifaces, err := getInterfaces()
-// 	if err != nil {
-// 		return nil, err
-// 	}
-
-// 	nics := make([]NetworkInterface, len(ifaces))
-// 	// extract the networks
-// 	for i, iface := range ifaces {
-// 		nics[i] = NetworkInterface{
-// 			Name:  iface.Name,
-// 			MAC:   copyHardwareAddr(iface.HardwareAddr),
-// 			Addrs: extractNetworks(iface, true),
-// 		}
-// 	}
-// 	return nics, nil
-// }
-
-// GetInternetGateway returns the IP of the next hop while reaching the Internet
-// func GetInternetGateway() net.IP {
-// 	ip := net.IPv4(8, 8, 8, 8)
-
-// 	router, err := routing.New()
-// 	if err != nil {
-// 		return nil
-// 	}
-
-// 	_, gw, _, err := router.Route(ip)
-// 	if err != nil {
-// 		return nil
-// 	}
-
-// 	return gw
-// }
-
-// GetPublicIP returns the ip of the machine hosting the agent
-// when it makes outside requests (gateway public ip)
-// func GetPublicIP() net.IP {
-// 	// m.logger.Debugf("Joining api.ipify.org")
-// 	resp, err := http.Get("https://api.ipify.org?format=txt")
-// 	if err != nil {
-// 		// m.logger.Error(err)
-// 		return nil
-// 	}
-
-// 	// m.logger.Debugf("Parsing response body")
-// 	body, err := io.ReadAll(resp.Body)
-// 	if err != nil {
-// 		// m.logger.Error(err)
-// 		return nil
-// 	}
-// 	// If body is not a valid textual representation of an IP address, ParseIP returns nil.
-// 	return net.ParseIP(string(body))
-// }

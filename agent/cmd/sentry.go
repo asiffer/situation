@@ -12,7 +12,6 @@ func initSentry(dsn string) error {
 			Dsn:              dsn,
 			EnableTracing:    true,
 			TracesSampleRate: 1.0,
-			DisableLogs:      false,
 			ServerName:       config.AgentString(),
 			Release:          config.Version,
 			Dist:             config.Commit,

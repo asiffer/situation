@@ -56,3 +56,10 @@ func Deduplicate[T any](slice []T, hash func(T) string) []T {
 	}
 	return result
 }
+
+func AppendIfNotExists[T comparable](slice []T, item T) []T {
+	if !Includes(slice, item) {
+		return append(slice, item)
+	}
+	return slice
+}
