@@ -52,3 +52,21 @@ func TestFindHostNIC(t *testing.T) {
 		})
 	}
 }
+
+func TestRefreshHostNICIPs(t *testing.T) {
+	nic := &models.NetworkInterface{IP: []string{"192.168.122.1"}}
+	seen := resetNICIPs(nic)
+
+	if len(nic.IP) != 0 {
+		t.Fatalf("resetNICIPs() left stale addresses: %v", nic.IP)
+	}
+	if !appendNICIP(nic, seen, "172.17.0.1") {
+		t.Fatal("appendNICIP() rejected a new address")
+	}
+	if appendNICIP(nic, seen, "172.17.0.1") {
+		t.Fatal("appendNICIP() accepted a duplicate address")
+	}
+	if len(nic.IP) != 1 || nic.IP[0] != "172.17.0.1" {
+		t.Fatalf("refreshed addresses = %v, want [172.17.0.1]", nic.IP)
+	}
+}

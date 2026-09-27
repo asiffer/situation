@@ -159,10 +159,11 @@ func (m *HostNetworkModule) Run(ctx context.Context) error {
 				s.Gateway = gwIP.String()
 			}
 
+			ips := ip.String()
 			if len(nic.IP) == 0 {
-				nic.IP = []string{ip.String()}
+				nic.IP = []string{ips}
 			} else {
-				nic.IP = append(nic.IP, ip.String())
+				nic.IP = utils.AppendIfNotExists(nic.IP, ips)
 			}
 
 			entry := logger.
@@ -193,10 +194,6 @@ func (m *HostNetworkModule) Run(ctx context.Context) error {
 				IP:               ip.String(),
 			}
 			allLinks = append(allLinks, link)
-			// links[hashNICSubnet(link)] = link
-			// key := hashNICSubnet()
-			// key := fmt.Sprintf("%v,%v", s.NetworkCIDR, nic.MAC)
-			// subnetNICMapper[key] = true
 		}
 
 		// add the NIC
@@ -401,65 +398,3 @@ func gatewayWithSrc(hw net.HardwareAddr, src net.IP) (*net.Interface, net.IP, er
 	iface, gw, _, err := r.RouteWithSrc(hw, src, GOOGLE)
 	return iface, gw, err
 }
-
-// func copyHardwareAddr(from net.HardwareAddr) net.HardwareAddr {
-// 	dest := make(net.HardwareAddr, len(from))
-// 	copy(dest, from)
-// 	return dest
-// }
-
-// func GetNetworkInterfaces() ([]NetworkInterface, error) {
-// 	// get the interfaces
-// 	ifaces, err := getInterfaces()
-// 	if err != nil {
-// 		return nil, err
-// 	}
-
-// 	nics := make([]NetworkInterface, len(ifaces))
-// 	// extract the networks
-// 	for i, iface := range ifaces {
-// 		nics[i] = NetworkInterface{
-// 			Name:  iface.Name,
-// 			MAC:   copyHardwareAddr(iface.HardwareAddr),
-// 			Addrs: extractNetworks(iface, true),
-// 		}
-// 	}
-// 	return nics, nil
-// }
-
-// GetInternetGateway returns the IP of the next hop while reaching the Internet
-// func GetInternetGateway() net.IP {
-// 	ip := net.IPv4(8, 8, 8, 8)
-
-// 	router, err := routing.New()
-// 	if err != nil {
-// 		return nil
-// 	}
-
-// 	_, gw, _, err := router.Route(ip)
-// 	if err != nil {
-// 		return nil
-// 	}
-
-// 	return gw
-// }
-
-// GetPublicIP returns the ip of the machine hosting the agent
-// when it makes outside requests (gateway public ip)
-// func GetPublicIP() net.IP {
-// 	// m.logger.Debugf("Joining api.ipify.org")
-// 	resp, err := http.Get("https://api.ipify.org?format=txt")
-// 	if err != nil {
-// 		// m.logger.Error(err)
-// 		return nil
-// 	}
-
-// 	// m.logger.Debugf("Parsing response body")
-// 	body, err := io.ReadAll(resp.Body)
-// 	if err != nil {
-// 		// m.logger.Error(err)
-// 		return nil
-// 	}
-// 	// If body is not a valid textual representation of an IP address, ParseIP returns nil.
-// 	return net.ParseIP(string(body))
-// }
