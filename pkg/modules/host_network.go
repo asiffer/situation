@@ -10,10 +10,9 @@ import (
 	"net"
 	"strings"
 
-	netroute "github.com/libp2p/go-netroute"
 	"github.com/asiffer/situation/pkg/models"
-	"github.com/asiffer/situation/pkg/store"
 	"github.com/asiffer/situation/pkg/utils"
+	netroute "github.com/libp2p/go-netroute"
 )
 
 var (
@@ -51,14 +50,36 @@ func (m *HostNetworkModule) Dependencies() []string {
 	return []string{"host-basic"}
 }
 
-func buildMACHostNICMap(ctx context.Context, storage *store.BunStorage) map[string]*models.NetworkInterface {
-	hostNICs := storage.GetHostNICs(ctx)
-	macNICMap := make(map[string]*models.NetworkInterface)
+func hostNICMACKey(mac string) string {
+	return "mac:" + strings.ToLower(mac)
+}
+
+func hostNICNameKey(name string) string {
+	return "name:" + name
+}
+
+// Index each NIC by MAC and name; prefixes keep the two key spaces distinct.
+func buildHostNICMap(hostNICs []*models.NetworkInterface) map[string]*models.NetworkInterface {
+	hostNICMap := make(map[string]*models.NetworkInterface)
 	for _, nic := range hostNICs {
-		mac := strings.ToLower(nic.MAC)
-		macNICMap[mac] = nic
+		if nic.MAC != "" {
+			hostNICMap[hostNICMACKey(nic.MAC)] = nic
+		}
+		if nic.Name != "" {
+			hostNICMap[hostNICNameKey(nic.Name)] = nic
+		}
 	}
-	return macNICMap
+	return hostNICMap
+}
+
+// Prefer MAC across renames, then use the name when an interface's MAC changes.
+func findHostNIC(iface net.Interface, hostNICMap map[string]*models.NetworkInterface) *models.NetworkInterface {
+	if mac := iface.HardwareAddr.String(); mac != "" {
+		if nic, exists := hostNICMap[hostNICMACKey(mac)]; exists {
+			return nic
+		}
+	}
+	return hostNICMap[hostNICNameKey(iface.Name)]
 }
 
 func hashNICSubnet(ns *models.NetworkInterfaceSubnet) string {
@@ -70,7 +91,7 @@ func (m *HostNetworkModule) Run(ctx context.Context) error {
 	storage := getStorage(ctx)
 
 	hostID := storage.GetHostID(ctx)
-	macNICMap := buildMACHostNICMap(ctx, storage)
+	hostNICMap := buildHostNICMap(storage.GetHostNICs(ctx))
 
 	nics := make([]*models.NetworkInterface, 0)
 	subnets := make([]*models.Subnetwork, 0)
@@ -84,12 +105,11 @@ func (m *HostNetworkModule) Run(ctx context.Context) error {
 	// var nic *models.NetworkInterface
 	// create nics
 	for _, iface := range ifaces {
-		nic := &models.NetworkInterface{MachineID: hostID}
-		// try to find existing nic by MAC address
-		mac := iface.HardwareAddr.String()
-		if n, exists := macNICMap[mac]; exists {
-			nic = n
+		nic := findHostNIC(iface, hostNICMap)
+		if nic == nil {
+			nic = &models.NetworkInterface{MachineID: hostID}
 		}
+		mac := iface.HardwareAddr.String()
 		// name
 		nic.Name = iface.Name
 		// mac

@@ -597,7 +597,7 @@ func RunBasic(ctx context.Context, p *Platform, logger logrus.FieldLogger, s *st
 				err = s.DB().
 					NewInsert().
 					Model(&endpoints).
-					On("CONFLICT (network_interface_id, addr, port, protocol) DO UPDATE").
+					On("CONFLICT (port, protocol, addr, COALESCE(network_interface_id, 0)) DO UPDATE").
 					Set("updated_at = CURRENT_TIMESTAMP").
 					Scan(ctx)
 				if err != nil {
