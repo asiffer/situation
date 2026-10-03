@@ -2,10 +2,11 @@ package modules
 
 import (
 	"context"
+	"io"
 
+	"github.com/asiffer/situation/pkg/store"
 	"github.com/google/uuid"
 	"github.com/sirupsen/logrus"
-	"github.com/asiffer/situation/pkg/store"
 )
 
 const (
@@ -17,7 +18,7 @@ const (
 func dummyLogger() logrus.FieldLogger {
 	// dummy logger
 	l := logrus.New()
-	l.Out = nil
+	l.SetOutput(io.Discard)
 	return l
 }
 

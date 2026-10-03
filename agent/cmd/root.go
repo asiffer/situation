@@ -5,8 +5,8 @@ import (
 	"context"
 	"net/mail"
 
-	"github.com/sirupsen/logrus"
 	"github.com/asiffer/situation/agent/config"
+	"github.com/sirupsen/logrus"
 
 	"github.com/urfave/cli/v3"
 )

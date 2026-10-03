@@ -10,8 +10,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/shirou/gopsutil/v4/host"
 	"github.com/asiffer/situation/pkg/models"
+	"github.com/shirou/gopsutil/v4/host"
 )
 
 func init() {

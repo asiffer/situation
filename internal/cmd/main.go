@@ -7,9 +7,9 @@ import (
 	"path"
 	"runtime"
 
-	"github.com/sirupsen/logrus"
 	"github.com/asiffer/situation/agent/config"
 	"github.com/asiffer/situation/pkg/utils"
+	"github.com/sirupsen/logrus"
 
 	"github.com/urfave/cli/v3"
 )

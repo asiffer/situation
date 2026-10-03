@@ -6,10 +6,10 @@ import (
 	"fmt"
 	"log/slog"
 
-	"github.com/modelcontextprotocol/go-sdk/mcp"
 	"github.com/asiffer/situation/agent/config"
 	"github.com/asiffer/situation/pkg/store"
 	"github.com/asiffer/situation/pkg/utils"
+	"github.com/modelcontextprotocol/go-sdk/mcp"
 	"github.com/uptrace/bun/dialect"
 	"github.com/urfave/cli/v3"
 )

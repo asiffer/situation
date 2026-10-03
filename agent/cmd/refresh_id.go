@@ -8,10 +8,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/minio/selfupdate"
-	"github.com/sirupsen/logrus"
 	"github.com/asiffer/situation/agent/config"
 	"github.com/asiffer/situation/pkg/utils"
+	"github.com/minio/selfupdate"
+	"github.com/sirupsen/logrus"
 	"github.com/urfave/cli/v3"
 )
 

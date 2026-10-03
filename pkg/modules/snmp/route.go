@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/gosnmp/gosnmp"
 	"github.com/asiffer/situation/pkg/utils"
+	"github.com/gosnmp/gosnmp"
 )
 
 type snmpRoute struct {

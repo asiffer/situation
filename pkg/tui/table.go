@@ -44,9 +44,9 @@ type newNodeMsg struct {
 }
 
 type TableModel struct {
-	table        table.Model
-	nics         []*models.NetworkInterface
-	lastCursor   int
+	table      table.Model
+	nics       []*models.NetworkInterface
+	lastCursor int
 }
 
 func NewTableModel() *TableModel {

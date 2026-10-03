@@ -19,6 +19,7 @@ var sqliteMigrations embed.FS
 var postgresMigrations embed.FS
 
 var TrackedModels = []any{
+	(*models.Agent)(nil),
 	(*models.Subnetwork)(nil),
 	(*models.Machine)(nil),
 	(*models.CPU)(nil),

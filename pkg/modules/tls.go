@@ -13,9 +13,9 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/sirupsen/logrus"
 	"github.com/asiffer/situation/pkg/models"
 	"github.com/asiffer/situation/pkg/utils"
+	"github.com/sirupsen/logrus"
 	"github.com/uptrace/bun"
 )
 

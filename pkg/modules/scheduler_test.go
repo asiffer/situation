@@ -5,6 +5,20 @@ import (
 	"testing"
 )
 
+type schedulerTestModule struct{}
+
+func (schedulerTestModule) Name() string {
+	return "scheduler-test"
+}
+
+func (schedulerTestModule) Dependencies() []string {
+	return nil
+}
+
+func (schedulerTestModule) Run(context.Context) error {
+	return nil
+}
+
 // func TestNewScheduler(t *testing.T) {
 // 	s := NewScheduler(GetEnabledModules())
 
@@ -37,8 +51,7 @@ import (
 
 func TestSingleRun(t *testing.T) {
 	ctx := context.Background()
-	// injectDefaultConfig()
-	s := NewScheduler([]Module{mods["host-basic"]})
+	s := NewScheduler([]Module{schedulerTestModule{}})
 	if err := s.Run(ctx); err != nil {
 		t.Error(err)
 	}

@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/shirou/gopsutil/v4/cpu"
 	"github.com/asiffer/situation/pkg/models"
+	"github.com/shirou/gopsutil/v4/cpu"
 )
 
 func init() {

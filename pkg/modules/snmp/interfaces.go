@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gosnmp/gosnmp"
 	"github.com/asiffer/situation/pkg/models"
+	"github.com/gosnmp/gosnmp"
 )
 
 type snmpNetwork struct {

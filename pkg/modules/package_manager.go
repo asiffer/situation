@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/sirupsen/logrus"
 	"github.com/asiffer/situation/pkg/models"
 	"github.com/asiffer/situation/pkg/store"
 	"github.com/asiffer/situation/pkg/utils"
+	"github.com/sirupsen/logrus"
 )
 
 type AbstractPackageManager struct {

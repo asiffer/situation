@@ -11,9 +11,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/asiffer/situation/agent/config"
 	"github.com/minio/selfupdate"
 	"github.com/sirupsen/logrus"
-	"github.com/asiffer/situation/agent/config"
 	"github.com/urfave/cli/v3"
 	"golang.org/x/mod/semver"
 )

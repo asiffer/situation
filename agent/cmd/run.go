@@ -63,7 +63,7 @@ var runCmd = cli.Command{
 
 func init() {
 	populateConfig()
-	runCmd.Flags = append(runCmd.Flags, dbFlag())
+	dbFlag()
 	runCmd.Flags = append(runCmd.Flags, generateFlags()...)
 }
 
@@ -202,6 +202,9 @@ func runAction(ctx context.Context, cmd *cli.Command) error {
 			logger.Errorf("Failed to migrate: %v", err)
 			return fmt.Errorf("failed to migrate: %v", err)
 		}
+	}
+	if err := storage.RegisterAgent(ctx, config.Version); err != nil {
+		return fmt.Errorf("failed to register agent: %w", err)
 	}
 
 	newCtx := modules.SituationContext(ctx, config.AgentString(), storage, loggerInterface)

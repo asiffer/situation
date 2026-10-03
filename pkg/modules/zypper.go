@@ -9,8 +9,8 @@ package modules
 import (
 	"context"
 
-	rpmdb "github.com/knqyf263/go-rpmdb/pkg"
 	"github.com/asiffer/situation/pkg/models"
+	rpmdb "github.com/knqyf263/go-rpmdb/pkg"
 )
 
 const (
