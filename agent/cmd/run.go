@@ -63,7 +63,7 @@ var runCmd = cli.Command{
 
 func init() {
 	populateConfig()
-	runCmd.Flags = append(runCmd.Flags, dbFlag())
+	dbFlag()
 	runCmd.Flags = append(runCmd.Flags, generateFlags()...)
 }
 
