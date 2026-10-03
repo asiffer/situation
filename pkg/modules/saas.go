@@ -26,7 +26,7 @@ func init() {
 type SaaSModule struct {
 	BaseModule
 
-	MaxEndpoints int
+	MaxEndpoints int64
 }
 
 // Bind binds configuration options for the SaaS module
