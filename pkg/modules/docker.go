@@ -9,10 +9,10 @@ import (
 	"runtime"
 
 	"github.com/asiffer/puzzle"
-	"github.com/moby/moby/client"
-	"github.com/sirupsen/logrus"
 	docker "github.com/asiffer/situation/pkg/modules/docker"
 	"github.com/asiffer/situation/pkg/store"
+	"github.com/moby/moby/client"
+	"github.com/sirupsen/logrus"
 )
 
 func init() {

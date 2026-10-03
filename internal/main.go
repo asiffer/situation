@@ -4,8 +4,8 @@ import (
 	"context"
 	"os"
 
-	"github.com/sirupsen/logrus"
 	"github.com/asiffer/situation/internal/cmd"
+	"github.com/sirupsen/logrus"
 )
 
 func main() {

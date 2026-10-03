@@ -4,8 +4,8 @@ import (
 	"context"
 	"log/slog"
 
-	"github.com/sirupsen/logrus"
 	"github.com/asiffer/situation/pkg/utils"
+	"github.com/sirupsen/logrus"
 )
 
 var logger = utils.NewLogger()

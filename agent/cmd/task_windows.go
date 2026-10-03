@@ -9,10 +9,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/asiffer/situation/agent/config"
 	"github.com/go-ole/go-ole"
 	"github.com/go-ole/go-ole/oleutil"
 	"github.com/sirupsen/logrus"
-	"github.com/asiffer/situation/agent/config"
 	"github.com/urfave/cli/v3"
 )
 

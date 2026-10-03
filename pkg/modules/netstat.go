@@ -13,10 +13,10 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/cakturk/go-netstat/netstat"
 	"github.com/asiffer/situation/pkg/models"
 	"github.com/asiffer/situation/pkg/store"
 	"github.com/asiffer/situation/pkg/utils"
+	"github.com/cakturk/go-netstat/netstat"
 )
 
 var (

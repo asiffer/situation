@@ -10,11 +10,11 @@ import (
 
 	"github.com/moby/moby/api/types/container"
 
-	"github.com/moby/moby/client"
-	"github.com/sirupsen/logrus"
 	"github.com/asiffer/situation/pkg/models"
 	"github.com/asiffer/situation/pkg/store"
 	"github.com/asiffer/situation/pkg/utils"
+	"github.com/moby/moby/client"
+	"github.com/sirupsen/logrus"
 )
 
 var Zero4 = netip.AddrFrom4([4]byte{0, 0, 0, 0})

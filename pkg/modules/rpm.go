@@ -13,10 +13,10 @@ import (
 
 	_ "modernc.org/sqlite"
 
-	"github.com/hashicorp/go-version"
-	"github.com/sirupsen/logrus"
 	"github.com/asiffer/situation/pkg/models"
 	"github.com/asiffer/situation/pkg/modules/rpm"
+	"github.com/hashicorp/go-version"
+	"github.com/sirupsen/logrus"
 )
 
 // see https://github.com/shirou/gopsutil/blob/master/host/host_linux.go#L215

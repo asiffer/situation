@@ -10,10 +10,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/asiffer/situation/agent/config"
 	"github.com/fatih/color"
 	"github.com/shiena/ansicolor"
 	"github.com/sirupsen/logrus"
-	"github.com/asiffer/situation/agent/config"
 )
 
 type ModuleFormatter struct {

@@ -11,8 +11,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/godbus/dbus/v5"
 	"github.com/asiffer/situation/pkg/models"
+	"github.com/godbus/dbus/v5"
 )
 
 func init() {

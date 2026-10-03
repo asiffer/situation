@@ -8,8 +8,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/jaypipes/ghw"
 	"github.com/asiffer/situation/pkg/models"
+	"github.com/jaypipes/ghw"
 )
 
 func init() {

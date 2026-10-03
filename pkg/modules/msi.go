@@ -15,9 +15,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/sirupsen/logrus"
 	"github.com/asiffer/situation/pkg/models"
 	"github.com/asiffer/situation/pkg/utils"
+	"github.com/sirupsen/logrus"
 	"golang.org/x/sys/windows/registry"
 )
 

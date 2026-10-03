@@ -3,9 +3,9 @@ package modules
 import (
 	"context"
 
+	"github.com/asiffer/situation/pkg/store"
 	"github.com/google/uuid"
 	"github.com/sirupsen/logrus"
-	"github.com/asiffer/situation/pkg/store"
 )
 
 const (

@@ -10,9 +10,9 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/asiffer/situation/pkg/models"
 	"github.com/jaypipes/ghw"
 	"github.com/jaypipes/pcidb/types"
-	"github.com/asiffer/situation/pkg/models"
 )
 
 func init() {
