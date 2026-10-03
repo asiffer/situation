@@ -203,6 +203,9 @@ func runAction(ctx context.Context, cmd *cli.Command) error {
 			return fmt.Errorf("failed to migrate: %v", err)
 		}
 	}
+	if err := storage.RegisterAgent(ctx, config.Version); err != nil {
+		return fmt.Errorf("failed to register agent: %w", err)
+	}
 
 	newCtx := modules.SituationContext(ctx, config.AgentString(), storage, loggerInterface)
 
