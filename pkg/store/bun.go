@@ -99,6 +99,14 @@ func isReadOnly(opts ...BunStorageOption) bool {
 	return s.readOnly
 }
 
+func getAgent(opts ...BunStorageOption) string {
+	s := &BunStorage{}
+	for _, opt := range opts {
+		opt(s)
+	}
+	return s.agent
+}
+
 func sqliteCheckReadOnly(dataSourceName string, opts ...BunStorageOption) string {
 	// dumyy struct
 	if !isReadOnly(opts...) {
@@ -202,6 +210,11 @@ func NewPostgresBunStorage(dataSourceName string, opts ...BunStorageOption) (*Bu
 				"default_transaction_read_only": "on",
 			}),
 		)
+	}
+
+	// add application_name=<agent> to track agent activity in PostgreSQL logs
+	if agent := getAgent(opts...); agent != "" {
+		pgOpts = append(pgOpts, pgdriver.WithApplicationName(agent))
 	}
 
 	connector := pgdriver.NewConnector(pgOpts...)
