@@ -3,6 +3,7 @@ package utils
 import (
 	"crypto/rand"
 	"encoding/binary"
+	"fmt"
 )
 
 func fallBackRandomByte() byte {
@@ -69,4 +70,41 @@ func RandomTCPPort(a, b uint16) uint16 {
 	// e := uint16(rand.Intn(int(b - a)))
 	e := RandUint16(b - a)
 	return a + e
+}
+
+var adjectives = []string{
+	"admiring", "affectionate", "amazing", "awesome", "blissful",
+	"bold", "brave", "brilliant", "charming", "cheerful",
+	"clever", "compassionate", "confident", "cool", "curious",
+	"dazzling", "determined", "dreamy", "eager", "ecstatic",
+	"elegant", "energetic", "epic", "fearless", "focused",
+	"friendly", "gallant", "gentle", "happy", "heuristic",
+	"inspiring", "jolly", "keen", "lucid", "magnificent",
+	"mystifying", "nifty", "optimistic", "peaceful", "quirky",
+	"radiant", "relaxed", "serene", "sharp", "tremendous",
+	"upbeat", "vibrant", "wizardly", "witty", "zealous",
+}
+
+var scientists = []string{
+	"archimedes", "avogadro", "babbage", "bohr", "boltzmann",
+	"copernicus", "curie", "darwin", "dijkstra", "dirac",
+	"einstein", "erdos", "euler", "faraday", "fermi",
+	"feynman", "franklin", "galileo", "gauss", "goodall",
+	"hawking", "heisenberg", "hilbert", "hopper", "hubble",
+	"hypatia", "johnson", "kepler", "knuth", "lamarr",
+	"lavoisier", "leibniz", "lovelace", "maxwell", "meitner",
+	"mendel", "mendeleev", "newton", "noether", "pasteur",
+	"pauling", "planck", "ramanujan", "riemann", "rutherford",
+	"schrodinger", "shannon", "tesla", "turing", "volta",
+}
+
+var _adjectivesCount = uint16(len(adjectives))
+
+var _scientistsCount = uint16(len(scientists))
+
+// RandomName returns a name like "tremendous erdos".
+func RandomName() string {
+	adj := adjectives[RandUint16(_adjectivesCount)]
+	sci := scientists[RandUint16(_scientistsCount)]
+	return fmt.Sprintf("%s %s", adj, sci)
 }
