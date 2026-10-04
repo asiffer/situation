@@ -188,6 +188,7 @@ sdk/drizzle/situation-drizzle-$(VERSION).tgz: $(MIGRATION_FILES)
 	@mkdir -p sdk/drizzle
 	@sed -i 's/"version":[ ]*".*"/"version": "$(VERSION)"/' sdk/drizzle/package.json
 	bun run drizzle-kit pull --out sdk/drizzle --url "$(PG_DSN)" --dialect postgresql
+	@sed -i 's/\.default(SESSION_USER)/.default(sql`SESSION_USER`)/g' sdk/drizzle/schema.ts
 	@printf "export * from './schema';\nexport * from './relations';\n" > sdk/drizzle/index.ts
 	cd sdk/drizzle && bun run build && bun pm pack
 

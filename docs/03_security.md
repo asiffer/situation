@@ -220,3 +220,4 @@ situation.exe run --no-migration --db="postgres://agent:secure-password@db.examp
 [^postgres-ssl-support]: [https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL](https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL)
 
 [^postgres-cert-authentication]: [https://www.postgresql.org/docs/current/auth-cert.html#AUTH-CERT](https://www.postgresql.org/docs/current/auth-cert.html#AUTH-CERT)
+

@@ -1,6 +1,6 @@
 [project]
 name = "situation"
-version = "0.20.0"
+version = "0.20.1"
 description = "IT data collection infrastructure"
 readme = "README.md"
 requires-python = ">=3.10"
