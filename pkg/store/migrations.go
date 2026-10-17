@@ -141,6 +141,38 @@ func (s *BunStorage) Migrate(ctx context.Context) error {
 	return nil
 }
 
+// SchemaStatus compares the migrations embedded in this binary with the ones
+// applied to the database, without writing anything (no migrator init).
+// Pending are known but not applied (db behind), unknown are applied but not
+// known (db ahead, e.g. migrated by a newer agent).
+func (s *BunStorage) SchemaStatus(ctx context.Context) (pending []string, unknown []string, err error) {
+	fsys, err := s.migrationsFS()
+	if err != nil {
+		return nil, nil, err
+	}
+	migrations := migrate.NewMigrations()
+	if err := migrations.Discover(fsys); err != nil {
+		return nil, nil, fmt.Errorf("failed to discover migrations: %w", err)
+	}
+	migrator := migrate.NewMigrator(s.db, migrations)
+
+	all, err := migrator.MigrationsWithStatus(ctx)
+	if err != nil {
+		return nil, nil, fmt.Errorf("failed to read migration status: %w", err)
+	}
+	for _, m := range all.Unapplied() {
+		pending = append(pending, m.Name)
+	}
+	missing, err := migrator.MissingMigrations(ctx)
+	if err != nil {
+		return nil, nil, fmt.Errorf("failed to read applied migrations: %w", err)
+	}
+	for _, m := range missing {
+		unknown = append(unknown, m.Name)
+	}
+	return pending, unknown, nil
+}
+
 // CreateTables directly creates all tables without migrations
 func (s *BunStorage) CreateTables(ctx context.Context) error {
 	for _, model := range TrackedModels {

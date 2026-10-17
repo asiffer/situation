@@ -106,9 +106,21 @@ goarm = $(strip \
 	@echo '          weight    run gsa with web interface'
 	@echo '        generate    run code generation'
 	@echo '         version    print the current version'
+	@echo '              ui    build the web UI (bin/situation-ui-*)'
+	@echo '     ui-generate    regenerate the templ views of the web UI'
 	@echo ''
 
-.PHONY: version all security analysis test clean clear container agent/cmd/mcp_const.go
+# web UI: separate binary, never linked into the agent
+UI_BIN   := $(BIN_DIR)/situation-ui-$(VERSION)-$(GOARCH)-$(GOOS)
+UI_TEMPL := $(GO) run github.com/a-h/templ/cmd/templ@v0.3.1070
+
+ui: ui-generate
+	$(BUILD) -o $(UI_BIN) ./cmd/situation-ui
+
+ui-generate:
+	$(UI_TEMPL) generate -path ./cmd/situation-ui
+
+.PHONY: ui ui-generate version all security analysis test clean clear container agent/cmd/mcp_const.go
 
 version:
 	@echo "$(VERSION)"
