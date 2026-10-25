@@ -14,9 +14,10 @@ var machineCounter = 0
 type Machine struct {
 	bun.BaseModel `bun:"table:machines,alias:machine"`
 
-	ID        int64     `bun:"id,pk,autoincrement"`
-	CreatedAt time.Time `bun:"created_at,nullzero,notnull,default:current_timestamp"`
-	UpdatedAt time.Time `bun:"updated_at,nullzero,notnull,default:current_timestamp"`
+	ID         int64     `bun:"id,pk,autoincrement"`
+	CreatedAt  time.Time `bun:"created_at,nullzero,notnull,default:current_timestamp"`
+	UpdatedAt  time.Time `bun:"updated_at,nullzero,notnull,default:current_timestamp"`
+	LastSeenAt time.Time `bun:"last_seen_at,nullzero"`
 
 	Hostname            string        `bun:"hostname" json:"hostname,omitempty" jsonschema:"description=name of the machine,example=DESKTOP-2HHPC7I,example=PC-JEAN-LUC,example=server07"`
 	HostID              string        `bun:"host_id,unique,nullzero" json:"host_id,omitempty" jsonschema:"description=machine uuid identifier,example=8375c6c3-de33-41a4-bdb2-4e467d9f632c"`

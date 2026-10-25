@@ -30,6 +30,7 @@ summary: Database schema for PostgreSQL storage
 | `id` | `BIGINT` | +mynaui:link-one+ |
 | `created_at` | `TIMESTAMPTZ` |  |
 | `updated_at` | `TIMESTAMPTZ` |  |
+| `last_seen_at` | `TIMESTAMPTZ` |  |
 | `hostname` | `VARCHAR` |  |
 | `host_id` | `VARCHAR` | +mynaui:one-diamond-solid+ |
 | `arch` | `VARCHAR` |  |

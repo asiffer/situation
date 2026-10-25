@@ -30,6 +30,7 @@ summary: Database schema for SQLite storage
 | `id` | `INTEGER` | +mynaui:link-one+ |
 | `created_at` | `TIMESTAMP` |  |
 | `updated_at` | `TIMESTAMP` |  |
+| `last_seen_at` | `TIMESTAMP` |  |
 | `hostname` | `VARCHAR` |  |
 | `host_id` | `VARCHAR` | +mynaui:one-diamond-solid+ |
 | `arch` | `VARCHAR` |  |

@@ -90,10 +90,15 @@ func pingSubnetwork(ctx context.Context, network *net.IPNet, subnetID int64, sou
 
 	// Build a set of IPs that already exist
 	existingIPSet := make(map[string]bool)
+	seenMachineIDs := make([]int64, 0, len(existingNICs))
 	for _, nic := range existingNICs {
 		for _, ip := range nic.IP {
 			existingIPSet[ip] = true
 		}
+		seenMachineIDs = append(seenMachineIDs, nic.MachineID)
+	}
+	if err := s.MarkMachinesSeen(ctx, seenMachineIDs); err != nil {
+		return fmt.Errorf("unable to update last-seen time for machines on subnetwork %s: %w", network.String(), err)
 	}
 
 	// Only create NICs for IPs that don't already exist

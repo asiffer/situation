@@ -99,6 +99,32 @@ func (s *BunStorage) PreUpdateMachine(m *models.Machine) *bun.UpdateQuery {
 		Set("updated_at = CURRENT_TIMESTAMP")
 }
 
+// MarkMachinesSeen records a recent positive observation for the given machines.
+func (s *BunStorage) MarkMachinesSeen(ctx context.Context, machineIDs []int64) error {
+	uniqueIDs := make([]int64, 0, len(machineIDs))
+	seen := make(map[int64]struct{}, len(machineIDs))
+	for _, id := range machineIDs {
+		if id <= 0 {
+			continue
+		}
+		if _, exists := seen[id]; exists {
+			continue
+		}
+		seen[id] = struct{}{}
+		uniqueIDs = append(uniqueIDs, id)
+	}
+	if len(uniqueIDs) == 0 {
+		return nil
+	}
+
+	_, err := s.db.NewUpdate().
+		Model((*models.Machine)(nil)).
+		Where("id IN (?)", bun.In(uniqueIDs)).
+		Set("last_seen_at = CURRENT_TIMESTAMP").
+		Exec(ctx)
+	return err
+}
+
 // NewEmptyMachine creates a new empty machine in the database.
 func (s *BunStorage) NewEmptyMachine(ctx context.Context) *models.Machine {
 	m := new(models.Machine)

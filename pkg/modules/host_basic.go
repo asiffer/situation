@@ -61,7 +61,8 @@ func (m *HostBasicModule) Run(ctx context.Context) error {
 		NewUpdate().
 		Model((*models.Machine)(nil)).
 		Where("id = ?", machine.ID).
-		Set("updated_at = CURRENT_TIMESTAMP")
+		Set("updated_at = CURRENT_TIMESTAMP").
+		Set("last_seen_at = CURRENT_TIMESTAMP")
 
 	if h, err := os.Hostname(); err == nil {
 		query = query.Set("hostname = ?", h)
